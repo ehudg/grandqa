@@ -1,0 +1,187 @@
+body {
+background: -o-linear-gradient(top, #e4f5fc 0%,#9fd8ef 33%,#bfe8f9 44%,#e4f5fc 65%,#2ab0ed 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #e4f5fc 0%,#9fd8ef 33%,#bfe8f9 44%,#e4f5fc 65%,#2ab0ed 100%); /* IE10+ */
+background: linear-gradient(to bottom, #e4f5fc 0%,#9fd8ef 33%,#bfe8f9 44%,#e4f5fc 65%,#2ab0ed 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f5fc', endColorstr='#2ab0ed',GradientType=0 ); /* IE6-9 */
+
+
+}
+/* style of the result's table*/
+	.myOtherTable { background-color:#FFFFE0;border-collapse:collapse;color:#000;font-size:18px;width:950px; }
+    .myOtherTable th { background-color:#BDB76B;color:white;width:50%; }
+    .myOtherTable td, .myOtherTable th { padding:10px;border:0; }
+    .myOtherTable td { border:1px dotted #BDB76B; text-align:center; }
+    .myOtherTable tr {  }        
+
+#nweteststable {
+	width:700px;
+	padding:5px;
+}
+
+#newTests {
+	display: inline-block;
+	/*float:left;*/
+	background-color:lightblue;
+	padding:10px;
+	-moz-box-shadow: 10px 10px 5px #888;
+	-webkit-box-shadow: 10px 10px 5px #888;
+	box-shadow: 10px 10px 5px #888;
+}
+
+
+#manageProducts {	
+	background-color:lightblue;
+	padding:10px;
+	display: inline-block;
+	/*float:left;*/
+	-moz-box-shadow: 10px 10px 5px #888;
+	-webkit-box-shadow: 10px 10px 5px #888;
+	box-shadow: 10px 10px 5px #888;
+}
+
+#lastTests {	
+	background-color:lightblue;
+	padding:10px;
+	display: inline-block;
+	/*float:left;*/
+	-moz-box-shadow: 10px 10px 5px #888;
+	-webkit-box-shadow: 10px 10px 5px #888;
+	box-shadow: 10px 10px 5px #888;
+}
+
+#testTypes {	
+	background-color:lightblue;
+	padding:10px;
+	display: inline-block;
+	-moz-box-shadow: 10px 10px 5px #888;
+	-webkit-box-shadow: 10px 10px 5px #888;
+	box-shadow: 10px 10px 5px #888;
+}
+
+#routine {
+	background-color:lightblue;
+	padding:10px;
+	display: inline-block;
+	-moz-box-shadow: 10px 10px 5px #888;
+	-webkit-box-shadow: 10px 10px 5px #888;
+	box-shadow: 10px 10px 5px #888;
+}
+/**/
+#table-2 {
+	border: 1px solid #e3e3e3;
+	background-color: green;
+    width: 100%;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+}
+#table-2 td, #table-2 th {
+	padding: 5px;
+	color: #333;
+}
+#table-2 thead {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	padding: .2em 0 .2em .5em;
+	text-align: left;
+	color: #4B4B4B;
+	background-color: #green;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#e3e3e3), color-stop(.6,#B3B3B3));
+	background-image: -moz-linear-gradient(top, #D6D6D6, #B0B0B0, #B3B3B3 90%);
+	border-bottom: solid 1px #999;
+}
+#table-2 th {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 17px;
+	line-height: 20px;
+	font-style: normal;
+	font-weight: normal;
+	text-align: left;
+	text-shadow: white 1px 1px 1px;
+}
+#table-2 td {
+	line-height: 20px;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	border-bottom: 1px solid #fff;
+	border-top: 1px solid #fff;
+}
+#table-2 td:hover {
+	background-color: green;
+}
+
+
+tr.rowselected {
+background-color:red;
+}
+
+#resTable tr:nth-child(even) {
+    background-color: #FFFFFF;
+}
+
+/*drag able*/
+#draggable { /*width: 150px; height: 150px;*/ padding: 0.5em; }
+
+.drgtop {
+	cursor:move;
+	background-color:#7AC5CD;
+	width:70px;
+	border-top-left-radius: 20% 15%;
+	border-top-right-radius: 20% 15%;
+}
+
+select {
+    -moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #223f5c) );
+	background:-moz-linear-gradient( center top, #79bbff 5%, #223f5c 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#223f5c');
+	background-color:#79bbff;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #84bbf3;
+	display:inline-block;
+	color:#EBEBEB;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:4px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #528ecc;
+}
+
+/*special buttons css*/
+input[type="button"]{
+	-moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #223f5c) );
+	background:-moz-linear-gradient( center top, #79bbff 5%, #223f5c 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#223f5c');
+	background-color:#79bbff;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #84bbf3;
+	display:inline-block;
+	color:#EBEBEB;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #528ecc;
+}
+input[type="button"]:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #223f5c), color-stop(1, #79bbff) );
+	background:-moz-linear-gradient( center top, #223f5c 5%, #79bbff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#223f5c', endColorstr='#79bbff');
+	background-color:#223f5c;
+}
+input[type="button"]:active {
+	position:relative;
+	top:1px;
+}
+/* This imageless css button was generated by CSSButtonGenerator.com */
+</style>
