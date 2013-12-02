@@ -6,6 +6,11 @@ if (!isset($_SESSION['username']))
 {
     header('Location: login_1.php');
 }
+error_reporting(E_ERROR | E_PARSE);
+include 'install.php';
+
+// check if all connecions are ok
+install();
 ?>
 
 <html>
