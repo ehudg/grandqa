@@ -13,11 +13,11 @@ $db = 'localhost';
 
 // define the database user name
 
-$dbuser = '';
+$dbuser = 'root';
 
 // define the database password
 
-$dbpass = '';
+$dbpass = 'ehudpassword';
 
 // define the database name. You can leave the default
 
@@ -25,18 +25,11 @@ $dbname = 'grandqa';
 
 // define the user name  
 
-$username = '';
+$username = 'user';
 
 // define the password
 
-$password = '';
-
-
-// answer to the curl of the db connection
-if (isset($_POST['name']) && $_POST['name'] == 'qa-sys') {
-    echo $db.','. $dbuser .','. $dbpass .','. $dbname;
-    die;
-}
+$password = 'wajamu11';
 
 // answer to the user call
 if (isset($_POST['getuser']) && $_POST['getuser'] == '1') {

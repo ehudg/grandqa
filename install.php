@@ -3,52 +3,10 @@
         
         //ChromePhp::log('Hello console!');
         
+        include 'Config.php';
         
-        // get the base url and retur  it to getdbconst() to connect to db
-        function curPageURL() {
-        $pageURL = 'http';
-        
-        $pageURL .= "://";
-        if ($_SERVER["SERVER_PORT"] != "80") {
-        $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
-        } else {
-        $pageURL .= $_SERVER["SERVER_NAME"];
-        }
-        
-        return $pageURL;
-        }
-
-        function getdbconst() {
-            $urlbase = curPageURL();
-            $url=  $urlbase . '/grandqa/Config.php'; 
-            $curl = curl_init($url);
-            curl_setopt($curl, CURLOPT_HEADER, 0);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); 
-            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
-            curl_setopt($curl, CURLOPT_POST, true);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, "name=qa-sys");
-            $result = curl_exec($curl);
-            $info = curl_getinfo($curl);
-            $http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-            if ($http_status != 200)
-            {
-                $error = curl_error($curl);
-                echo $error . $info;
-                die;
-            }
-            
-            $arr=explode(',',$result);                     
-            $db_host=$arr[0];
-            $db_user=$arr[1];
-            $db_pass=$arr[2];
-            $db_name=$arr[3];
-            curl_close($curl);
-            $connection_ =new mysqli($db_host, $db_user, $db_pass, $db_name);    
-            return $connection_;
-        }
         // global var
-        $connection = getdbconst();        
+        $connection = new mysqli($db, $dbuser, $dbpass, $dbname);         
         
         // Check if there's a connection to the DB
         function checkConn() {
@@ -118,7 +76,7 @@
                     `text` varchar(3000)  NOT NULL                    
                 ) DEFAULT CHARSET=utf8";
                 $query_array[1] = "CREATE TABLE IF NOT EXISTS products (
-                    `PRODUCT_NAME` varchar(20)  NOT NULL ,                                       
+                    `PRODUCT_NAME` varchar(20)  NOT NULL                                        
                 ) DEFAULT CHARSET=utf8";
                 $query_array[2] = "CREATE TABLE IF NOT EXISTS routine_test (
                     `TASK` varchar(100)  NOT NULL ,
@@ -126,20 +84,22 @@
                     `LAST_TEST` date
                 ) DEFAULT CHARSET=utf8";
                 $query_array[3] = "CREATE TABLE IF NOT EXISTS tests (
-                    `index` int(255) unsigned NOT NULL auto_increment,
+                    `index` int(255)  NOT NULL auto_increment,
                     `PRODUCT_NAME` varchar(50)  NOT NULL ,  
                     `TITLE` varchar(2000)  NOT NULL ,
                     `RESULTS` varchar(3000)  NOT NULL,   
                     `NOTES` varchar(3000)  NOT NULL,   
-                    `DATE` date
+                    `DATE` date,
+                    PRIMARY KEY (`index`)
                 ) DEFAULT CHARSET=utf8";
                 $query_array[4] = "CREATE TABLE IF NOT EXISTS isdeleted (
-                    `index` int(255) unsigned NOT NULL auto_increment,
+                    `index` int(255)  NOT NULL auto_increment,
                     `PRODUCT_NAME` varchar(50)  NOT NULL ,  
                     `TITLE` varchar(2000)  NOT NULL ,
                     `RESULTS` varchar(3000)  NOT NULL,   
                     `NOTES` varchar(3000)  NOT NULL,   
-                    `DATE` date
+                    `DATE` date,
+                     PRIMARY KEY (`index`)
                 ) DEFAULT CHARSET=utf8";
                 
                 
