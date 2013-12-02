@@ -8,6 +8,20 @@
         // global var
         $connection = new mysqli($db, $dbuser, $dbpass, $dbname);         
         
+        
+        //create the database
+        function createdb($_db) {
+            GLOBAL $connection;                       
+                       
+            if (mysqli_query($connection,"CREATE DATABASE '".$_db."'"))            {
+                return true;
+            }
+            
+            else            {
+                return false;
+            }
+        }
+        
         // Check if there's a connection to the DB
         function checkConn() {
             GLOBAL $connection;
@@ -78,7 +92,7 @@
                 $query_array[1] = "CREATE TABLE IF NOT EXISTS products (
                     `PRODUCT_NAME` varchar(20)  NOT NULL                                        
                 ) DEFAULT CHARSET=utf8";
-                $query_array[2] = "CREATE TABLE IF NOT EXISTS routine_test (
+                $query_array[2] = "CREATE TABLE IF NOT EXISTS routine_tests (
                     `TASK` varchar(100)  NOT NULL ,
                     `TIME_SPAN` varchar(50)  NOT NULL,
                     `LAST_TEST` date
@@ -103,7 +117,7 @@
                 ) DEFAULT CHARSET=utf8";
                 
                 
-                for ($i = 0; $i<count.$query_array; $i++) {
+                for ($i = 0; $i<count($query_array); $i++) {
                     if(!$result = $connection->query($query_array[$i])){
                         die('There was an error running the query [' . $connection->error . ']');
                     }   
@@ -120,6 +134,10 @@
         // if the tables dosnt exist, asume this is first entrance
         // create the tables and notify the user
         function install() {
+            GLOBAL $dbname;
+            // create the database
+            createdb($dbname);
+            
             if (!checkConn()) {
                 echo '<h1 style="text-align:center;font-size:3em;font-color:green;">Can\'t connect to Mysql database, please check your config </h1>';
                 die;

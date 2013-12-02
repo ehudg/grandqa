@@ -17,7 +17,7 @@ $dbuser = 'root';
 
 // define the database password
 
-$dbpass = 'ehudpassword';
+$dbpass = '';
 
 // define the database name. You can leave the default
 
@@ -25,11 +25,11 @@ $dbname = 'grandqa';
 
 // define the user name  
 
-$username = 'user';
+$username = '';
 
 // define the password
 
-$password = 'wajamu11';
+$password = '';
 
 // answer to the user call
 if (isset($_POST['getuser']) && $_POST['getuser'] == '1') {

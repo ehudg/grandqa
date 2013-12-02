@@ -15,7 +15,7 @@ install();
 
 <html>
     <head>       
-        <title> The coolest QA system ever </title>
+        <title> GrandQA </title>
         
         <link rel="icon"   type="image/png"  href="images/qa-logo-W.ico">
         
@@ -27,7 +27,7 @@ install();
         <script type="text/javascript" src="js/js.js"></script>
         
         <!-- Codes by HTML.am -->
-        <!-- Start Styles. Move the 'style' tags and everything between them to between the 'head' tags -->
+        
         <link rel="stylesheet" type="text/css" href="css/css.css">
         <link rel="stylesheet" href="chosen/chosen.css" />
         <!-- drag n drop scripts-->
@@ -45,15 +45,23 @@ install();
     <body>
         <div style="float:none;" >    
             <!--  the last tests appears first-->
-            <span id="draggable3" class="ui-widget-content">
-               <div onClick="allowdrag('draggable3')" class="drgtop" >Drag me!</div>
-                <span id="lastTests" >
-
-                </span>
-           </span>
+           
         </div>
         
         <div style="float:left;"> <!-- left part of doc -->
+         <!-- first show manageing the products -->   
+         <span id="draggable2" class="ui-widget-content">
+            <div onClick="allowdrag('draggable2')" class="drgtop" >Drag me!</div>
+            <span id="manageProducts">
+                <h3>Manage Products</h3>
+                Add product: <input type="textbox" id="addProduct" /> &nbsp; <input type="button" onclick="addprd()" value="Add" /> <br />
+                Delete product : 
+                        <span id="wrap_product2"> </span>      
+                        <input type="button" onclick="delprd()" value="Delete" /> <br /> 
+            </span>
+        </span>
+            
+         <!-- insert new test results-->   
          <span id="draggable1" class="ui-widget-content">
             <div onClick="allowdrag('draggable')" class="drgtop" >Drag me!</div>        
         
@@ -63,18 +71,7 @@ install();
                         <input  type="hidden" name="current_date" value='<?php echo date("Y-m-d") ?>' <br />
                         Select product:                         
                         <span id="wrap_product"> </span>              
-                        <!--
-                        <div class="side-by-side clearfix">
-                            Select components:
-                            <select data-placeholder="Choose a Country..." style="width:350px;" multiple tabindex="3" id="componenets-select">
-                                <option>DefaultTab</option>
-                                <option>Delta</option>
-                                <option>WebCake</option>
-                                <option>Yontoo</option>
-                        </select>
-                        <input type="hidden" class="selectvalue" name="selectvalue" value="no erros" />
-                        </div>
-                        -->
+                     
                         <br />
                         <table id="nweteststable" >
                             <tr>
@@ -127,22 +124,21 @@ install();
             </span>
          </span>
         
-        <span id="draggable2" class="ui-widget-content">
-            <div onClick="allowdrag('draggable2')" class="drgtop" >Drag me!</div>
-            <span id="manageProducts">
-                <h3>Manage Products</h3>
-                Add product: <input type="textbox" id="addProduct" /> &nbsp; <input type="button" onclick="addprd()" value="Add" /> <br />
-                Delete product : 
-                        <span id="wrap_product2"> </span>      
-                        <input type="button" onclick="delprd()" value="Delete" /> <br /> 
-            </span>
-        </span>
+        
             
       
     </div> <!-- end of left part -->  
     
     <div style="float:right;"> <!-- right part of doc-->
        
+        <!-- show last tests results-->
+         <span id="draggable3" class="ui-widget-content">
+               <div onClick="allowdrag('draggable3')" class="drgtop" >Drag me!</div>
+                <span id="lastTests" >
+
+                </span>
+           </span>
+        
         <span id="draggable4" class="ui-widget-content">
             <div onClick="allowdrag('draggable4')" class="drgtop" >Drag me!</div>
             <!-- all the routine tasks -->
