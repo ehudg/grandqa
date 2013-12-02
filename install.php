@@ -20,7 +20,7 @@
 
         function getdbconst() {
             $urlbase = curPageURL();
-            $url=  $urlbase . '/ehudqa/Config.php'; 
+            $url=  $urlbase . '/grandqa/Config.php'; 
             $curl = curl_init($url);
             curl_setopt($curl, CURLOPT_HEADER, 0);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
