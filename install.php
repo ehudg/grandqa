@@ -10,14 +10,20 @@
         
         
         //create the database
-        function createdb($_db) {
-            GLOBAL $connection;                       
+        function createdb($_db, $host, $user, $pass) {
+		
+            $conn = new mysqli($host, $user, $pass);                   
                        
-            if (mysqli_query($connection,"CREATE DATABASE '".$_db."'"))            {
+            if (mysqli_query($conn,"CREATE DATABASE ".$_db))      {
+				ChromePhp::log('db created!');
+				
+				// now create the tables
+				createTables($conn, $_db);
                 return true;
             }
             
             else            {
+				ChromePhp::log('failed to create db');
                 return false;
             }
         }
@@ -56,14 +62,14 @@
              $tablesArr = array(
                  0 => 'instructions',
                  1 => 'products',
-                 2 => 'routine_test',
+                 2 => 'routine_tests',
                  3 => 'tests',
                  4 => 'isdeleted'
              );
           
            for ($i = 0; $i<count($tablesArr); $i++) {
              if (!TableExists($tablesArr[$i])) {
-                    ChromePhp::log('a table is missing');
+                    ChromePhp::log('table '. $tablesArr[$i]  .' is missing');
                     return false;
              }
              else {
@@ -76,13 +82,21 @@
         
         
         // if the tables do not exist, create them
-        function createTables() {
-            GLOBAL $connection;
-            if (!checkConn()) {
-                echo '<h1 style="text-align:center;font-size:3em;font-color:red;">There is no connection to the database.</h1><br /> <h3 style="text-align:center;"> Please  update Config.php file.</h3>';
-                die;
-            }
-            else {
+		// called after creating the db
+        function createTables($connection, $dbname) {
+		               
+				mysqli_select_db($connection, $dbname);
+				
+				if (mysqli_connect_errno()) { 
+     
+					echo "<h2>Failure:</h2><em>" . mysqli_connect_error() . "</em>"; 
+					die;
+					 
+				}
+				else {
+					ChromePhp::log('connected to db!');
+				}
+				ChromePhp::log('create tables start');
                 $query_array = array(5);
                 
                 $query_array[0] = "CREATE TABLE IF NOT EXISTS instructions (
@@ -118,14 +132,16 @@
                 
                 
                 for ($i = 0; $i<count($query_array); $i++) {
-                    if(!$result = $connection->query($query_array[$i])){
-                        die('There was an error running the query [' . $connection->error . ']');
-                    }   
-                }
-                
-                echo '<h1 style="text-align:center;font-size:3em;font-color:green;">all tables were created successfully</h1>';
-                echo '<h2 style="text-align:center;">Go to <a href="index.php"> home page </a> </h2>';
-            }
+				ChromePhp::log('trying to create ' .$query_array[$i]);
+                    
+					$queryResult = mysqli_query($connection, $query_array[$i]); 
+					if ($queryResult === TRUE) { 
+						ChromePhp::log('table ' .$query_array[$i].' created!');
+					} else { 
+						ChromePhp::log('faild to created table ' .$query_array[$i]);
+					} 
+                }              
+                         
             
         }
         
@@ -135,18 +151,16 @@
         // create the tables and notify the user
         function install() {
             GLOBAL $dbname;
-            // create the database
-            createdb($dbname);
+			GLOBAL $db;
+			GLOBAL $dbuser;
+			GLOBAL $dbpass;
+			GLOBAL $connection; 
             
             if (!checkConn()) {
-                echo '<h1 style="text-align:center;font-size:3em;font-color:green;">Can\'t connect to Mysql database, please check your config </h1>';
-                die;
-            }
-            
-            if (!checkTablesexist()) {
-                createTables();
-            }
-            
+				// if connection failed, create the db create the database
+				createdb($dbname, $db, $dbuser, $dbpass);               
+            }            
+           
             // all is ok, continue as noraml!
             else {
                 // do nothing

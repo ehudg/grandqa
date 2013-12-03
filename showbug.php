@@ -76,8 +76,6 @@ EOT;
         function showproduct($ddlname) { 
            global $connection;
 
-           //$mysqli = new mysqli("localhost", "php", 'Antigua', "ehudqa");            
-
            $query1 = "SELECT * FROM `products`";                
            if(!$result = $connection->query($query1)){
                die('There was an error running the query [' . $connection->error . ']');
@@ -87,8 +85,7 @@ EOT;
            {
                $Products[] = $row['PRODUCT_NAME'];
            } 
-
-           //$mysqli->close();               
+                        
 
            $html = array();
            for ($i=1;$i<4;$i++) {
@@ -119,7 +116,7 @@ EOT;
         //----------------------------------------manageProducts----------------------------------//
         function addProduct($prd) {
                 global $connection;
-                //$mysqli = new mysqli("localhost", "php", 'Antigua', "ehudqa");   
+                
                 $query1 = "INSERT INTO `products`(`PRODUCT_NAME`) VALUES ('".$prd ."')";                
                 if(!$result = $connection->query($query1)){
                     die('There was an error running the query [' . $connection->error . ']');
@@ -129,8 +126,7 @@ EOT;
         //----------------------------------------testTypes---------------------------------------//
         // Show tests instructions for specefiec product
              function testInstroction($pname) {
-                 global $connection;
-                //$mysqli = new mysqli("localhost", "php", 'Antigua', "ehudqa");            
+                 global $connection;                         
                             
                 $query1 = "SELECT `text` FROM `instructions` WHERE `name`='".$pname."';";                
                 if(!$result = $connection->query($query1)){
@@ -264,15 +260,13 @@ EOT;
                 <h3 align="center">Show report</h3>
                 <h4 align="center">Test summery: '.$testResult[0]['TITLE'].' </h4>
                 <table class="myOtherTable" align="center">
-                    <tr><th>Product</th><th>Notes</th><th>Results</th><th>Componenets</th><th>Date</th></tr>
+                    <tr><th>Product</th><th>Results</th><th>Date</th></tr>
                 ';
                  
                 echo '<tr>';                
-                echo '<td>'. $testResult[0]['PRODUCT_NAME'] . '</td>';                
-                //echo '<td>'. $testResult[0]['NOTES'] . '</td>';
+                echo '<td>'. $testResult[0]['PRODUCT_NAME'] . '</td>';     
                 echo '<td>'.$notesTable.'</span></td>';
-                echo '<td>'. $testResult[0]['RESULTS'] . '</td>';
-                echo '<td>'. $testResult[0]['COMPONENTS'] . '</td>';
+                //echo '<td>'. $testResult[0]['RESULTS'] . '</td>';               
                 echo '<td>'. $testResult[0]['DATE'] . '</td>';                
                 echo '</tr>';
                 
@@ -285,8 +279,7 @@ EOT;
             function showproductfilter($prd_or_date) { 
                global $connection;
                
-               if ($prd_or_date == 'prd') {
-               //$mysqli = new mysqli("localhost", "php", 'Antigua', "ehudqa");            
+               if ($prd_or_date == 'prd') {                   
                              
                $query1 = "SELECT * FROM `products`";                
                if(!$result = $connection->query($query1)){
@@ -338,8 +331,7 @@ EOT;
              // run in every page load, create a full table
             function checkRoutinetasks () {
                 global $connection;
-                // select last test date for every task
-                //$mysqli = new mysqli("localhost", "php", 'Antigua', "ehudqa");            
+                // select last test date for every task                       
                              
                 $query1 = "SELECT * FROM `routine_tests`";                
                 if(!$result = $connection->query($query1)){
@@ -456,7 +448,7 @@ EOT;
                     echo 'Connect failed: %s\n' . mysqli_connect_error();
                     exit();
                 }                
-                $query1 = "DELETE FROM ehudqa.routine_tests WHERE `TASK` = '" . $taskname ."'";                
+                $query1 = "DELETE FROM routine_tests WHERE `TASK` = '" . $taskname ."'";                
                 if(!$result = $connection->query($query1)){
                     die('There was an error running the query [' . $connection->error . ']');
                 }                  
@@ -465,7 +457,7 @@ EOT;
             // Add new routine task
             function addnewtask($taskname,$taskspan, $lasttime) {
                 global $connection;                 
-                $query = "INSERT INTO `ehudqa`.`routine_tests` (`TASK`, `TIME_SPAN`, `LAST_TEST`) VALUES ('$taskname', '$taskspan', '$lasttime')"; 
+                $query = "INSERT INTO routine_tests (`TASK`, `TIME_SPAN`, `LAST_TEST`) VALUES ('$taskname', '$taskspan', '$lasttime')"; 
                
                $result = mysqli_query($connection, $query);
                if ( false===$result ) {
@@ -542,7 +534,7 @@ EOT;
                 }   
                 
                 
-                $query_delete = "DELETE FROM ehudqa.tests WHERE `index` = '" . $_GET['delete'] ."'";                
+                $query_delete = "DELETE FROM tests WHERE `index` = '" . $_GET['delete'] ."'";                
                 if(!$result1 = $connection->query($query_delete)){
                     die('There was an error running the query [' . $connection->error . ']');
                 } 
@@ -557,7 +549,7 @@ EOT;
                     echo 'Connect failed: %s\n' . mysqli_connect_error();
                     exit();
                 }                
-                $query1 = "DELETE FROM ehudqa.products WHERE `PRODUCT_NAME` = '" . $_GET['deleteproduct'] ."'";                
+                $query1 = "DELETE FROM products WHERE `PRODUCT_NAME` = '" . $_GET['deleteproduct'] ."'";                
                 if(!$result = $connection->query($query1)){
                     die('There was an error running the query [' . $connection->error . ']');
                 }   
