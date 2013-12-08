@@ -5,6 +5,7 @@ Grandqa - open source QA management  system, with new UI approach
 
 All the data is arranged in a single page! Update your test plans, the tests results and routine tasks without refreshing, with no links to other pages - all in one place.
 
+Youtube tutorial for installing and using: http://youtu.be/HG3E1BlFnLQ
 
 Requirements
 -----------
